@@ -1,0 +1,17 @@
+D:\Repositories\GIT\BigRedButton\BigRedButton\bin\Debug\BigRedButton.exe.config
+D:\Repositories\GIT\BigRedButton\BigRedButton\bin\Debug\BigRedButton.exe
+D:\Repositories\GIT\BigRedButton\BigRedButton\bin\Debug\BigRedButton.pdb
+D:\Repositories\GIT\BigRedButton\BigRedButton\bin\Debug\HidLibrary.dll
+D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.csprojResolveAssemblyReference.cache
+D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.MainForm.resources
+D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.Properties.Resources.resources
+D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.csproj.GenerateResource.Cache
+D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.exe
+D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.pdb
+D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\Resources\Icons.baml
+D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\Resources\Icons.g.cs
+D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton_Content.g.cs
+D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton_MarkupCompile.cache
+D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.g.resources
+D:\Repositories\GIT\BigRedButton\BigRedButton\bin\Debug\MetroFramework.dll
+D:\Repositories\GIT\BigRedButton\BigRedButton\bin\Debug\System.Windows.Interactivity.dll
