@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using HidLibrary;
+using System.Diagnostics;
 
-using MetroFramework.Forms;
+//#if WINDOWS
+using Microsoft.Win32;
+//#endif
 
 namespace BigRedButton
 {
-    public partial class MainForm : MetroForm
+    public partial class MainForm : Form
     {
         HidDevice[] HidDeviceList;
         HidDevice HidDevice;
@@ -36,8 +39,6 @@ namespace BigRedButton
         public MainForm()
         {
             InitializeComponent();
-
-            this.Style = MetroFramework.MetroColorStyle.Red;
         }
 
         /// <summary>
@@ -65,7 +66,7 @@ namespace BigRedButton
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ApplyButton_Click(object sender, EventArgs e)
+        private void StartButton_Click(object sender, EventArgs e)
         {
             String VIDString = VIDTextBox.Text;
             String PIDString = PIDTextBox.Text;
@@ -160,11 +161,13 @@ namespace BigRedButton
                 if (buttonPressed && !wasButtonPressed)
                 {
                     Console.WriteLine("Button Pressed");
+                    SendKeys.Send(MacroTextBox.Text);
                 }
                 //Button was just release
                 else if (!buttonPressed && wasButtonPressed)
                 {
                     Console.WriteLine("Button Released");
+                    SendKeys.Flush();
                 }
 
                 //Save for next poll
@@ -218,17 +221,38 @@ namespace BigRedButton
         {
             if (AdvancedCheckBox.Checked)
             {
-                //PressedStateTextBox.ReadOnly = false;
-                //ReleasedStateTextBox.ReadOnly = false;
+                PressedStateTextBox.ReadOnly = false;
+                ReleasedStateTextBox.ReadOnly = false;
             }
             else 
             {
-                //PressedStateTextBox.ReadOnly = true;
-                //ReleasedStateTextBox.ReadOnly = true;
+                PressedStateTextBox.ReadOnly = true;
+                ReleasedStateTextBox.ReadOnly = true;
 
-                PressedStateTextBox.Text = "0 0x16 0x00 0x00 0x00 0x00 0x00 0x00 0x03";
-                ReleasedStateTextBox.Text = "0 0x17 0x00 0x00 0x00 0x00 0x00 0x00 0x03";
+                PressedStateTextBox.Text = "0x16 0x00 0x00 0x00 0x00 0x00 0x00 0x03";
+                ReleasedStateTextBox.Text = "0x17 0x00 0x00 0x00 0x00 0x00 0x00 0x03";
             }
         }
+
+        /// <summary>
+        /// Every few milliseconds, clear the combo box and refill it with the current onscreen applications
+        /// </summary>
+        private void ApplicationTimer_Tick(object sender, EventArgs e)
+        {
+            string registry_key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
+            using (Microsoft.Win32.RegistryKey key = Registry.LocalMachine.OpenSubKey(registry_key))
+            {
+                foreach (string subkey_name in key.GetSubKeyNames())
+                {
+                    using (RegistryKey subkey = key.OpenSubKey(subkey_name))
+                    {
+                        string DisplayName = (string)subkey.GetValue("DisplayName");
+                        if(!string.IsNullOrEmpty(DisplayName))
+                            ProcessesComboBox.Items.Add(DisplayName);
+                    }
+                }
+            }
+        }
+
     }
 }

@@ -29,235 +29,151 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.StartButton = new MetroFramework.Controls.MetroButton();
-            this.VIDTextBox = new MetroFramework.Controls.MetroTextBox();
-            this.VIDLabel = new MetroFramework.Controls.MetroLabel();
-            this.PIDLabel = new MetroFramework.Controls.MetroLabel();
-            this.PIDTextBox = new MetroFramework.Controls.MetroTextBox();
-            this.VIDResetButton = new MetroFramework.Controls.MetroButton();
-            this.PIDResetButton = new MetroFramework.Controls.MetroButton();
-            this.MacroLabel = new MetroFramework.Controls.MetroLabel();
-            this.MacroTextBox = new MetroFramework.Controls.MetroTextBox();
-            this.StopButton = new MetroFramework.Controls.MetroButton();
-            this.StatusLabel = new MetroFramework.Controls.MetroLabel();
-            this.AdvancedCheckBox = new MetroFramework.Controls.MetroCheckBox();
-            this.CurrentStateTextBox = new MetroFramework.Controls.MetroTextBox();
-            this.PressedStateTextBox = new MetroFramework.Controls.MetroTextBox();
-            this.ReleasedStateTextBox = new MetroFramework.Controls.MetroTextBox();
-            this.CurrentStateLabel = new MetroFramework.Controls.MetroLabel();
-            this.PressedStateLabel = new MetroFramework.Controls.MetroLabel();
-            this.ReleasedStateLabel = new MetroFramework.Controls.MetroLabel();
+            this.StartButton = new System.Windows.Forms.Button();
+            this.VIDTextBox = new System.Windows.Forms.TextBox();
+            this.VIDLabel = new System.Windows.Forms.Label();
+            this.PIDLabel = new System.Windows.Forms.Label();
+            this.PIDTextBox = new System.Windows.Forms.TextBox();
+            this.VIDResetButton = new System.Windows.Forms.Button();
+            this.PIDResetButton = new System.Windows.Forms.Button();
+            this.MacroLabel = new System.Windows.Forms.Label();
+            this.MacroTextBox = new System.Windows.Forms.TextBox();
+            this.StopButton = new System.Windows.Forms.Button();
+            this.StatusLabel = new System.Windows.Forms.Label();
+            this.AdvancedCheckBox = new System.Windows.Forms.CheckBox();
+            this.CurrentStateTextBox = new System.Windows.Forms.TextBox();
+            this.PressedStateTextBox = new System.Windows.Forms.TextBox();
+            this.ReleasedStateTextBox = new System.Windows.Forms.TextBox();
+            this.CurrentStateLabel = new System.Windows.Forms.Label();
+            this.PressedStateLabel = new System.Windows.Forms.Label();
+            this.ReleasedStateLabel = new System.Windows.Forms.Label();
             this.PollTimer = new System.Windows.Forms.Timer(this.components);
+            this.ProcessesLabel = new System.Windows.Forms.Label();
+            this.ProcessesComboBox = new System.Windows.Forms.ComboBox();
+            this.ApplicationTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // StartButton
             // 
             this.StartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.StartButton.Highlight = false;
-            this.StartButton.Location = new System.Drawing.Point(358, 318);
+            this.StartButton.Location = new System.Drawing.Point(392, 248);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(75, 23);
-            this.StartButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.StartButton.StyleManager = null;
             this.StartButton.TabIndex = 0;
-            this.StartButton.Text = "Apply";
-            this.StartButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.StartButton.Click += new System.EventHandler(this.ApplyButton_Click);
+            this.StartButton.Text = "Start";
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // VIDTextBox
             // 
             this.VIDTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.VIDTextBox.CustomBackground = false;
-            this.VIDTextBox.CustomForeColor = false;
-            this.VIDTextBox.FontSize = MetroFramework.MetroTextBoxSize.Small;
-            this.VIDTextBox.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.VIDTextBox.Location = new System.Drawing.Point(46, 94);
-            this.VIDTextBox.Multiline = false;
+            this.VIDTextBox.Location = new System.Drawing.Point(45, 21);
             this.VIDTextBox.Name = "VIDTextBox";
-            this.VIDTextBox.SelectedText = "";
-            this.VIDTextBox.Size = new System.Drawing.Size(306, 20);
-            this.VIDTextBox.Style = MetroFramework.MetroColorStyle.Blue;
-            this.VIDTextBox.StyleManager = null;
+            this.VIDTextBox.Size = new System.Drawing.Size(340, 20);
             this.VIDTextBox.TabIndex = 1;
             this.VIDTextBox.Text = "1D34";
-            this.VIDTextBox.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.VIDTextBox.UseStyleColors = false;
+            this.VIDTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // VIDLabel
             // 
             this.VIDLabel.AutoSize = true;
-            this.VIDLabel.CustomBackground = false;
-            this.VIDLabel.CustomForeColor = false;
-            this.VIDLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.VIDLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.VIDLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.VIDLabel.Location = new System.Drawing.Point(15, 94);
+            this.VIDLabel.Location = new System.Drawing.Point(14, 24);
             this.VIDLabel.Name = "VIDLabel";
-            this.VIDLabel.Size = new System.Drawing.Size(29, 19);
-            this.VIDLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.VIDLabel.StyleManager = null;
+            this.VIDLabel.Size = new System.Drawing.Size(25, 13);
             this.VIDLabel.TabIndex = 2;
             this.VIDLabel.Text = "VID";
-            this.VIDLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.VIDLabel.UseStyleColors = false;
             // 
             // PIDLabel
             // 
             this.PIDLabel.AutoSize = true;
-            this.PIDLabel.CustomBackground = false;
-            this.PIDLabel.CustomForeColor = false;
-            this.PIDLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.PIDLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.PIDLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.PIDLabel.Location = new System.Drawing.Point(15, 120);
+            this.PIDLabel.Location = new System.Drawing.Point(14, 50);
             this.PIDLabel.Name = "PIDLabel";
-            this.PIDLabel.Size = new System.Drawing.Size(29, 19);
-            this.PIDLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.PIDLabel.StyleManager = null;
+            this.PIDLabel.Size = new System.Drawing.Size(25, 13);
             this.PIDLabel.TabIndex = 4;
             this.PIDLabel.Text = "PID";
-            this.PIDLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.PIDLabel.UseStyleColors = false;
             // 
             // PIDTextBox
             // 
             this.PIDTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PIDTextBox.CustomBackground = false;
-            this.PIDTextBox.CustomForeColor = false;
-            this.PIDTextBox.FontSize = MetroFramework.MetroTextBoxSize.Small;
-            this.PIDTextBox.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.PIDTextBox.Location = new System.Drawing.Point(46, 120);
-            this.PIDTextBox.Multiline = false;
+            this.PIDTextBox.Location = new System.Drawing.Point(45, 47);
             this.PIDTextBox.Name = "PIDTextBox";
-            this.PIDTextBox.SelectedText = "";
-            this.PIDTextBox.Size = new System.Drawing.Size(306, 20);
-            this.PIDTextBox.Style = MetroFramework.MetroColorStyle.Blue;
-            this.PIDTextBox.StyleManager = null;
+            this.PIDTextBox.Size = new System.Drawing.Size(340, 20);
             this.PIDTextBox.TabIndex = 3;
             this.PIDTextBox.Text = "000D";
-            this.PIDTextBox.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.PIDTextBox.UseStyleColors = false;
+            this.PIDTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // VIDResetButton
             // 
             this.VIDResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.VIDResetButton.Highlight = false;
-            this.VIDResetButton.Location = new System.Drawing.Point(358, 92);
+            this.VIDResetButton.Location = new System.Drawing.Point(391, 19);
             this.VIDResetButton.Name = "VIDResetButton";
             this.VIDResetButton.Size = new System.Drawing.Size(75, 23);
-            this.VIDResetButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.VIDResetButton.StyleManager = null;
             this.VIDResetButton.TabIndex = 5;
             this.VIDResetButton.Text = "Reset";
-            this.VIDResetButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.VIDResetButton.Click += new System.EventHandler(this.VIDResetButton_Click);
             // 
             // PIDResetButton
             // 
             this.PIDResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PIDResetButton.Highlight = false;
-            this.PIDResetButton.Location = new System.Drawing.Point(358, 118);
+            this.PIDResetButton.Location = new System.Drawing.Point(391, 45);
             this.PIDResetButton.Name = "PIDResetButton";
             this.PIDResetButton.Size = new System.Drawing.Size(75, 23);
-            this.PIDResetButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.PIDResetButton.StyleManager = null;
             this.PIDResetButton.TabIndex = 6;
             this.PIDResetButton.Text = "Reset";
-            this.PIDResetButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.PIDResetButton.Click += new System.EventHandler(this.PIDResetButton_Click);
             // 
             // MacroLabel
             // 
             this.MacroLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.MacroLabel.AutoSize = true;
-            this.MacroLabel.CustomBackground = false;
-            this.MacroLabel.CustomForeColor = false;
-            this.MacroLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.MacroLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.MacroLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.MacroLabel.Location = new System.Drawing.Point(15, 292);
+            this.MacroLabel.Location = new System.Drawing.Point(14, 215);
             this.MacroLabel.Name = "MacroLabel";
-            this.MacroLabel.Size = new System.Drawing.Size(47, 19);
-            this.MacroLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.MacroLabel.StyleManager = null;
+            this.MacroLabel.Size = new System.Drawing.Size(37, 13);
             this.MacroLabel.TabIndex = 8;
             this.MacroLabel.Text = "Macro";
-            this.MacroLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.MacroLabel.UseStyleColors = false;
             // 
             // MacroTextBox
             // 
-            this.MacroTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MacroTextBox.CustomBackground = false;
-            this.MacroTextBox.CustomForeColor = false;
-            this.MacroTextBox.FontSize = MetroFramework.MetroTextBoxSize.Small;
-            this.MacroTextBox.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.MacroTextBox.Location = new System.Drawing.Point(68, 292);
-            this.MacroTextBox.Multiline = false;
+            this.MacroTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.MacroTextBox.Location = new System.Drawing.Point(67, 212);
             this.MacroTextBox.Name = "MacroTextBox";
-            this.MacroTextBox.SelectedText = "";
-            this.MacroTextBox.Size = new System.Drawing.Size(365, 20);
-            this.MacroTextBox.Style = MetroFramework.MetroColorStyle.Blue;
-            this.MacroTextBox.StyleManager = null;
+            this.MacroTextBox.Size = new System.Drawing.Size(121, 20);
             this.MacroTextBox.TabIndex = 7;
             this.MacroTextBox.Text = "A";
-            this.MacroTextBox.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.MacroTextBox.UseStyleColors = false;
+            this.MacroTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // StopButton
             // 
             this.StopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StopButton.Highlight = false;
-            this.StopButton.Location = new System.Drawing.Point(12, 318);
+            this.StopButton.Location = new System.Drawing.Point(12, 248);
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(75, 23);
-            this.StopButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.StopButton.StyleManager = null;
             this.StopButton.TabIndex = 9;
             this.StopButton.Text = "Stop";
-            this.StopButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // StatusLabel
             // 
-            this.StatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.StatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.CustomBackground = false;
-            this.StatusLabel.CustomForeColor = false;
-            this.StatusLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.StatusLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.StatusLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.StatusLabel.Location = new System.Drawing.Point(185, 323);
+            this.StatusLabel.Location = new System.Drawing.Point(108, 253);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(71, 19);
-            this.StatusLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.StatusLabel.StyleManager = null;
+            this.StatusLabel.Size = new System.Drawing.Size(60, 13);
             this.StatusLabel.TabIndex = 10;
             this.StatusLabel.Text = "Status: Idle";
             this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.StatusLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.StatusLabel.UseStyleColors = false;
             // 
             // AdvancedCheckBox
             // 
             this.AdvancedCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AdvancedCheckBox.AutoSize = true;
-            this.AdvancedCheckBox.CustomBackground = false;
-            this.AdvancedCheckBox.CustomForeColor = false;
-            this.AdvancedCheckBox.FontSize = MetroFramework.MetroLinkSize.Small;
-            this.AdvancedCheckBox.FontWeight = MetroFramework.MetroLinkWeight.Regular;
-            this.AdvancedCheckBox.Location = new System.Drawing.Point(357, 164);
+            this.AdvancedCheckBox.Location = new System.Drawing.Point(392, 92);
             this.AdvancedCheckBox.Name = "AdvancedCheckBox";
-            this.AdvancedCheckBox.Size = new System.Drawing.Size(76, 15);
-            this.AdvancedCheckBox.Style = MetroFramework.MetroColorStyle.Blue;
-            this.AdvancedCheckBox.StyleManager = null;
+            this.AdvancedCheckBox.Size = new System.Drawing.Size(75, 17);
             this.AdvancedCheckBox.TabIndex = 11;
             this.AdvancedCheckBox.Text = "Advanced";
-            this.AdvancedCheckBox.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.AdvancedCheckBox.UseStyleColors = false;
             this.AdvancedCheckBox.UseVisualStyleBackColor = true;
             this.AdvancedCheckBox.CheckedChanged += new System.EventHandler(this.AdvancedCheckBox_CheckedChanged);
             // 
@@ -265,132 +181,110 @@
             // 
             this.CurrentStateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CurrentStateTextBox.CustomBackground = false;
-            this.CurrentStateTextBox.CustomForeColor = false;
-            this.CurrentStateTextBox.FontSize = MetroFramework.MetroTextBoxSize.Small;
-            this.CurrentStateTextBox.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.CurrentStateTextBox.Location = new System.Drawing.Point(111, 188);
-            this.CurrentStateTextBox.Multiline = false;
+            this.CurrentStateTextBox.Location = new System.Drawing.Point(111, 118);
             this.CurrentStateTextBox.Name = "CurrentStateTextBox";
-            this.CurrentStateTextBox.SelectedText = "";
-            this.CurrentStateTextBox.Size = new System.Drawing.Size(322, 20);
-            this.CurrentStateTextBox.Style = MetroFramework.MetroColorStyle.Blue;
-            this.CurrentStateTextBox.StyleManager = null;
+            this.CurrentStateTextBox.ReadOnly = true;
+            this.CurrentStateTextBox.Size = new System.Drawing.Size(356, 20);
             this.CurrentStateTextBox.TabIndex = 12;
             this.CurrentStateTextBox.Text = "Unavailable";
-            this.CurrentStateTextBox.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.CurrentStateTextBox.UseStyleColors = false;
+            this.CurrentStateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // PressedStateTextBox
             // 
             this.PressedStateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PressedStateTextBox.CustomBackground = false;
-            this.PressedStateTextBox.CustomForeColor = false;
-            this.PressedStateTextBox.FontSize = MetroFramework.MetroTextBoxSize.Small;
-            this.PressedStateTextBox.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.PressedStateTextBox.Location = new System.Drawing.Point(111, 214);
-            this.PressedStateTextBox.Multiline = false;
+            this.PressedStateTextBox.Location = new System.Drawing.Point(111, 144);
             this.PressedStateTextBox.Name = "PressedStateTextBox";
-            this.PressedStateTextBox.SelectedText = "";
-            this.PressedStateTextBox.Size = new System.Drawing.Size(322, 20);
-            this.PressedStateTextBox.Style = MetroFramework.MetroColorStyle.Blue;
-            this.PressedStateTextBox.StyleManager = null;
+            this.PressedStateTextBox.ReadOnly = true;
+            this.PressedStateTextBox.Size = new System.Drawing.Size(356, 20);
             this.PressedStateTextBox.TabIndex = 13;
             this.PressedStateTextBox.Text = "0x16 0x00 0x00 0x00 0x00 0x00 0x00 0x03";
-            this.PressedStateTextBox.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.PressedStateTextBox.UseStyleColors = false;
+            this.PressedStateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ReleasedStateTextBox
             // 
             this.ReleasedStateTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReleasedStateTextBox.CustomBackground = false;
-            this.ReleasedStateTextBox.CustomForeColor = false;
-            this.ReleasedStateTextBox.FontSize = MetroFramework.MetroTextBoxSize.Small;
-            this.ReleasedStateTextBox.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.ReleasedStateTextBox.Location = new System.Drawing.Point(111, 240);
-            this.ReleasedStateTextBox.Multiline = false;
+            this.ReleasedStateTextBox.Location = new System.Drawing.Point(111, 170);
             this.ReleasedStateTextBox.Name = "ReleasedStateTextBox";
-            this.ReleasedStateTextBox.SelectedText = "";
-            this.ReleasedStateTextBox.Size = new System.Drawing.Size(322, 20);
-            this.ReleasedStateTextBox.Style = MetroFramework.MetroColorStyle.Blue;
-            this.ReleasedStateTextBox.StyleManager = null;
+            this.ReleasedStateTextBox.ReadOnly = true;
+            this.ReleasedStateTextBox.Size = new System.Drawing.Size(356, 20);
             this.ReleasedStateTextBox.TabIndex = 14;
             this.ReleasedStateTextBox.Text = "0x17 0x00 0x00 0x00 0x00 0x00 0x00 0x03";
-            this.ReleasedStateTextBox.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.ReleasedStateTextBox.UseStyleColors = false;
+            this.ReleasedStateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // CurrentStateLabel
             // 
             this.CurrentStateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CurrentStateLabel.AutoSize = true;
-            this.CurrentStateLabel.CustomBackground = false;
-            this.CurrentStateLabel.CustomForeColor = false;
-            this.CurrentStateLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.CurrentStateLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.CurrentStateLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.CurrentStateLabel.Location = new System.Drawing.Point(12, 188);
+            this.CurrentStateLabel.Location = new System.Drawing.Point(12, 118);
             this.CurrentStateLabel.Name = "CurrentStateLabel";
-            this.CurrentStateLabel.Size = new System.Drawing.Size(93, 19);
-            this.CurrentStateLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.CurrentStateLabel.StyleManager = null;
+            this.CurrentStateLabel.Size = new System.Drawing.Size(75, 13);
             this.CurrentStateLabel.TabIndex = 15;
             this.CurrentStateLabel.Text = "Current State: ";
-            this.CurrentStateLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.CurrentStateLabel.UseStyleColors = false;
             // 
             // PressedStateLabel
             // 
             this.PressedStateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PressedStateLabel.AutoSize = true;
-            this.PressedStateLabel.CustomBackground = false;
-            this.PressedStateLabel.CustomForeColor = false;
-            this.PressedStateLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.PressedStateLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.PressedStateLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.PressedStateLabel.Location = new System.Drawing.Point(12, 214);
+            this.PressedStateLabel.Location = new System.Drawing.Point(12, 144);
             this.PressedStateLabel.Name = "PressedStateLabel";
-            this.PressedStateLabel.Size = new System.Drawing.Size(94, 19);
-            this.PressedStateLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.PressedStateLabel.StyleManager = null;
+            this.PressedStateLabel.Size = new System.Drawing.Size(79, 13);
             this.PressedStateLabel.TabIndex = 16;
             this.PressedStateLabel.Text = "Pressed State: ";
-            this.PressedStateLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.PressedStateLabel.UseStyleColors = false;
             // 
             // ReleasedStateLabel
             // 
             this.ReleasedStateLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ReleasedStateLabel.AutoSize = true;
-            this.ReleasedStateLabel.CustomBackground = false;
-            this.ReleasedStateLabel.CustomForeColor = false;
-            this.ReleasedStateLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.ReleasedStateLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.ReleasedStateLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.ReleasedStateLabel.Location = new System.Drawing.Point(12, 240);
+            this.ReleasedStateLabel.Location = new System.Drawing.Point(12, 170);
             this.ReleasedStateLabel.Name = "ReleasedStateLabel";
-            this.ReleasedStateLabel.Size = new System.Drawing.Size(97, 19);
-            this.ReleasedStateLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.ReleasedStateLabel.StyleManager = null;
+            this.ReleasedStateLabel.Size = new System.Drawing.Size(83, 13);
             this.ReleasedStateLabel.TabIndex = 17;
             this.ReleasedStateLabel.Text = "Released State:";
-            this.ReleasedStateLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.ReleasedStateLabel.UseStyleColors = false;
             // 
             // PollTimer
             // 
             this.PollTimer.Interval = 10;
             this.PollTimer.Tick += new System.EventHandler(this.ButtonPoll);
             // 
+            // ProcessesLabel
+            // 
+            this.ProcessesLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ProcessesLabel.AutoSize = true;
+            this.ProcessesLabel.Location = new System.Drawing.Point(194, 215);
+            this.ProcessesLabel.Name = "ProcessesLabel";
+            this.ProcessesLabel.Size = new System.Drawing.Size(59, 13);
+            this.ProcessesLabel.TabIndex = 19;
+            this.ProcessesLabel.Text = "Application";
+            // 
+            // ProcessesComboBox
+            // 
+            this.ProcessesComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProcessesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ProcessesComboBox.ItemHeight = 13;
+            this.ProcessesComboBox.Location = new System.Drawing.Point(259, 212);
+            this.ProcessesComboBox.Name = "ProcessesComboBox";
+            this.ProcessesComboBox.Size = new System.Drawing.Size(208, 21);
+            this.ProcessesComboBox.TabIndex = 18;
+            // 
+            // ApplicationTimer
+            // 
+            this.ApplicationTimer.Enabled = true;
+            this.ApplicationTimer.Interval = 1000;
+            this.ApplicationTimer.Tick += new System.EventHandler(this.ApplicationTimer_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 353);
+            this.ClientSize = new System.Drawing.Size(479, 283);
+            this.Controls.Add(this.ProcessesLabel);
+            this.Controls.Add(this.ProcessesComboBox);
             this.Controls.Add(this.ReleasedStateLabel);
             this.Controls.Add(this.PressedStateLabel);
             this.Controls.Add(this.CurrentStateLabel);
@@ -409,7 +303,6 @@
             this.Controls.Add(this.StartButton);
             this.Controls.Add(this.VIDLabel);
             this.Controls.Add(this.VIDTextBox);
-            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MainForm";
             this.Text = "Big Red Button";
             this.ResumeLayout(false);
@@ -419,25 +312,28 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroButton StartButton;
-        private MetroFramework.Controls.MetroTextBox VIDTextBox;
-        private MetroFramework.Controls.MetroLabel VIDLabel;
-        private MetroFramework.Controls.MetroLabel PIDLabel;
-        private MetroFramework.Controls.MetroTextBox PIDTextBox;
-        private MetroFramework.Controls.MetroButton VIDResetButton;
-        private MetroFramework.Controls.MetroButton PIDResetButton;
-        private MetroFramework.Controls.MetroLabel MacroLabel;
-        private MetroFramework.Controls.MetroTextBox MacroTextBox;
-        private MetroFramework.Controls.MetroButton StopButton;
-        private MetroFramework.Controls.MetroLabel StatusLabel;
-        private MetroFramework.Controls.MetroCheckBox AdvancedCheckBox;
-        private MetroFramework.Controls.MetroTextBox CurrentStateTextBox;
-        private MetroFramework.Controls.MetroTextBox PressedStateTextBox;
-        private MetroFramework.Controls.MetroTextBox ReleasedStateTextBox;
-        private MetroFramework.Controls.MetroLabel CurrentStateLabel;
-        private MetroFramework.Controls.MetroLabel PressedStateLabel;
-        private MetroFramework.Controls.MetroLabel ReleasedStateLabel;
+        private System.Windows.Forms.Button StartButton;
+        private System.Windows.Forms.TextBox VIDTextBox;
+        private System.Windows.Forms.Label VIDLabel;
+        private System.Windows.Forms.Label PIDLabel;
+        private System.Windows.Forms.TextBox PIDTextBox;
+        private System.Windows.Forms.Button VIDResetButton;
+        private System.Windows.Forms.Button PIDResetButton;
+        private System.Windows.Forms.Label MacroLabel;
+        private System.Windows.Forms.TextBox MacroTextBox;
+        private System.Windows.Forms.Button StopButton;
+        private System.Windows.Forms.Label StatusLabel;
+        private System.Windows.Forms.CheckBox AdvancedCheckBox;
+        private System.Windows.Forms.TextBox CurrentStateTextBox;
+        private System.Windows.Forms.TextBox PressedStateTextBox;
+        private System.Windows.Forms.TextBox ReleasedStateTextBox;
+        private System.Windows.Forms.Label CurrentStateLabel;
+        private System.Windows.Forms.Label PressedStateLabel;
+        private System.Windows.Forms.Label ReleasedStateLabel;
         private System.Windows.Forms.Timer PollTimer;
+        private System.Windows.Forms.Label ProcessesLabel;
+        private System.Windows.Forms.ComboBox ProcessesComboBox;
+        private System.Windows.Forms.Timer ApplicationTimer;
     }
 }
 
