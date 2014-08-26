@@ -34,3 +34,11 @@ Icon
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+
+#VS Trash
+.Cache
+.cache
+.pdb
+.suo
+.csproj
+.FileListAbsolute.txt

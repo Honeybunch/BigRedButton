@@ -39,6 +39,23 @@ namespace BigRedButton
         public MainForm()
         {
             InitializeComponent();
+
+            string registry_key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths";
+            using (Microsoft.Win32.RegistryKey key = Registry.LocalMachine.OpenSubKey(registry_key))
+            {
+                foreach (string subkey_name in key.GetSubKeyNames())
+                {
+                    using (RegistryKey subkey = key.OpenSubKey(subkey_name))
+                    {
+                        string DisplayPath = (string)subkey.GetValue(null);
+                        if (!string.IsNullOrEmpty(DisplayPath))
+                        {
+                            string DisplayName = ProcessTools.GetFileNameFromPath(DisplayPath);
+                            ProcessesComboBox.Items.Add(DisplayName);
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -93,8 +110,6 @@ namespace BigRedButton
 
             //Otherwise we've found our button!
 
-            //TODO: Setup the macro 
-
             //Get the HID
             HidDevice = HidDeviceList[0];
 
@@ -142,6 +157,11 @@ namespace BigRedButton
             }
             else
             {
+                Console.WriteLine(ProcessTools.GetProcessExecutableName(ProcessTools.GetForegroundProcess()));
+
+                //If the foreground application matches the one we selected, continue, if not stop
+                if (ProcessesComboBox.Text != "" && ProcessesComboBox.Text != ProcessTools.GetProcessExecutableName(ProcessTools.GetForegroundProcess()))
+                    return;
 
                 byte[] state = report.Data.ToArray();
 
@@ -235,23 +255,11 @@ namespace BigRedButton
         }
 
         /// <summary>
-        /// Every few milliseconds, clear the combo box and refill it with the current onscreen applications
+        /// Every few milliseconds check to see if we can use our macro based on what application is in the foreground
         /// </summary>
         private void ApplicationTimer_Tick(object sender, EventArgs e)
         {
-            string registry_key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
-            using (Microsoft.Win32.RegistryKey key = Registry.LocalMachine.OpenSubKey(registry_key))
-            {
-                foreach (string subkey_name in key.GetSubKeyNames())
-                {
-                    using (RegistryKey subkey = key.OpenSubKey(subkey_name))
-                    {
-                        string DisplayName = (string)subkey.GetValue("DisplayName");
-                        if(!string.IsNullOrEmpty(DisplayName))
-                            ProcessesComboBox.Items.Add(DisplayName);
-                    }
-                }
-            }
+            
         }
 
     }
