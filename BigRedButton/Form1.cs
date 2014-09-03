@@ -29,7 +29,7 @@ namespace BigRedButton
         bool wasButtonPressed = false;
 
         //For threadsafe value changing
-        delegate void SetTextCallback(Label labe, string text);
+        delegate void SetTextCallback(Label label, string text);
 
         //Values that won't change
         readonly byte[] ButtonStatusCheck = { 0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02 };
@@ -43,6 +43,10 @@ namespace BigRedButton
             string registry_key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths";
             using (Microsoft.Win32.RegistryKey key = Registry.LocalMachine.OpenSubKey(registry_key))
             {
+                List<string> displayNames = new List<string>();
+                //Add "None" option for the macro to fire no matter what application is in focus
+                displayNames.Add("None");
+
                 foreach (string subkey_name in key.GetSubKeyNames())
                 {
                     using (RegistryKey subkey = key.OpenSubKey(subkey_name))
@@ -51,10 +55,13 @@ namespace BigRedButton
                         if (!string.IsNullOrEmpty(DisplayPath))
                         {
                             string DisplayName = ProcessTools.GetFileNameFromPath(DisplayPath);
-                            ProcessesComboBox.Items.Add(DisplayName);
+                            displayNames.Add(DisplayName);
                         }
                     }
                 }
+
+                //Store the list of applications in the Macro class for when Macros are added to the form
+                Macro.Applications = displayNames;
             }
         }
 
@@ -83,40 +90,51 @@ namespace BigRedButton
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void StartButton_Click(object sender, EventArgs e)
+        private void StartStopButton_Click(object sender, EventArgs e)
         {
-            String VIDString = VIDTextBox.Text;
-            String PIDString = PIDTextBox.Text;
-
-            //Parse the HEX of the VID and PID
-            VID = Int32.Parse(VIDString, System.Globalization.NumberStyles.AllowHexSpecifier);
-            int PID = Int32.Parse(PIDString, System.Globalization.NumberStyles.AllowHexSpecifier);
-            
-            //Because PID has to be in an array
-            PIDArray = new int[1];
-            PIDArray[0] = PID;
-
-            String Macro = MacroTextBox.Text;
-
-            //Enumerate the HIDs on the given VID and PID
-            HidDeviceList = HidDevices.Enumerate(VID, PIDArray).ToArray();
-
-            //If there are no devices, lets let the user know and stop
-            if (HidDeviceList.Length <= 0)
+            //If the Poll Timer is running, stop, otherwise check the button status and start polling if it's available
+            if (PollTimer.Enabled)
             {
-                MessageBox.Show("No devices found with that VID and PID :(");
-                return;
+                StopTimer();
+
+                StartStopButton.Text = "Start";
             }
+            else
+            {
+                String VIDString = VIDTextBox.Text;
+                String PIDString = PIDTextBox.Text;
 
-            //Otherwise we've found our button!
+                //Parse the HEX of the VID and PID
+                VID = Int32.Parse(VIDString, System.Globalization.NumberStyles.AllowHexSpecifier);
+                int PID = Int32.Parse(PIDString, System.Globalization.NumberStyles.AllowHexSpecifier);
 
-            //Get the HID
-            HidDevice = HidDeviceList[0];
+                //Because PID has to be in an array
+                PIDArray = new int[1];
+                PIDArray[0] = PID;
 
-            //Enable the system timer
-            PollTimer.Enabled = true;
+                //String Macro = MacroTextBox.Text;
 
-            StatusLabel.Text = "Status: Running";
+                //Enumerate the HIDs on the given VID and PID
+                HidDeviceList = HidDevices.Enumerate(VID, PIDArray).ToArray();
+
+                //If there are no devices, lets let the user know and stop
+                if (HidDeviceList.Length <= 0)
+                {
+                    MessageBox.Show("No devices found with that VID and PID :(");
+                    return;
+                }
+
+                //Otherwise we've found our button!
+
+                //Get the HID
+                HidDevice = HidDeviceList[0];
+
+                //Enable the system timer
+                PollTimer.Enabled = true;
+
+                StatusLabel.Text = "Status: Running";
+                StartStopButton.Text = "Stop";
+            }
             
         }
 
@@ -151,17 +169,20 @@ namespace BigRedButton
             //Make this threadsafe
             if (this.InvokeRequired)
             {
-                this.Invoke(
-                    new MethodInvoker(
-                    delegate() { OnRead(report); }));
+                //This is just to make sure the application can gracefully close
+                //Without the try/catch, the application will crash on close
+                try
+                {
+                    this.Invoke(
+                        new MethodInvoker(
+                        delegate() { OnRead(report); }));
+                }
+                catch (ObjectDisposedException e)
+                { }
             }
             else
             {
                 Console.WriteLine(ProcessTools.GetProcessExecutableName(ProcessTools.GetForegroundProcess()));
-
-                //If the foreground application matches the one we selected, continue, if not stop
-                if (ProcessesComboBox.Text != "" && ProcessesComboBox.Text != ProcessTools.GetProcessExecutableName(ProcessTools.GetForegroundProcess()))
-                    return;
 
                 byte[] state = report.Data.ToArray();
 
@@ -181,7 +202,7 @@ namespace BigRedButton
                 if (buttonPressed && !wasButtonPressed)
                 {
                     Console.WriteLine("Button Pressed");
-                    SendKeys.Send(MacroTextBox.Text);
+                    ExecuteMacros();
                 }
                 //Button was just release
                 else if (!buttonPressed && wasButtonPressed)
@@ -195,14 +216,16 @@ namespace BigRedButton
             }
         }
 
-        /// <summary>
-        /// Stops the HID thread
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void StopButton_Click(object sender, EventArgs e)
+        private void ExecuteMacros() 
         {
-            StopTimer();
+            foreach (Macro m in Macro.Macros)
+            {
+                //If the foreground application matches the one in the macro or is "None", continue
+                if (m.ApplicationComboBox.Text != "None" && m.ApplicationComboBox.Text != ProcessTools.GetProcessExecutableName(ProcessTools.GetForegroundProcess()))
+                    continue;
+
+                SendKeys.Send(m.MacroTextBox.Text);
+            }
         }
 
         /// <summary>
@@ -255,11 +278,12 @@ namespace BigRedButton
         }
 
         /// <summary>
-        /// Every few milliseconds check to see if we can use our macro based on what application is in the foreground
+        /// Add a new macro to the MacroPanel
         /// </summary>
-        private void ApplicationTimer_Tick(object sender, EventArgs e)
+        private void AddMacroButton_Click(object sender, EventArgs e)
         {
-            
+            Macro macro = new Macro();
+            macro.CreateControls(MacrosPanel);
         }
 
     }

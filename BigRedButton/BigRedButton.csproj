@@ -53,9 +53,6 @@
     <Reference Include="HidLibrary">
       <HintPath>lib\HidLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="MetroFramework">
-      <HintPath>packages\ModernUI.1.1.0.1\lib\net45\MetroFramework.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -81,6 +78,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Macro.cs" />
+    <Compile Include="ProcessTools.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

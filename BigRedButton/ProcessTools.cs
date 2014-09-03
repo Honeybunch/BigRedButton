@@ -28,6 +28,9 @@ namespace BigRedButton
 
         public static string GetFileNameFromPath(string path) 
         {
+            if (path == null)
+                return null;
+
             int splitIndex = path.LastIndexOf("\\") + 1;
 
             string name = path.Substring(splitIndex);
