@@ -33,8 +33,10 @@ namespace BigRedButton
 
         //Values that won't change
         readonly byte[] ButtonStatusCheck = { 0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02 };
-        readonly byte[] ButtonDown = { 0x16, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03 };
-        readonly byte[] ButtonUp = { 0x17, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03 };
+
+        //Defaults that can be changed by the user if they really want to 
+        byte[] ButtonDown = { 0x16, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03 };
+        byte[] ButtonUp = { 0x17, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03 };
 
         public MainForm()
         {
@@ -199,7 +201,12 @@ namespace BigRedButton
             else
             {
                 Console.WriteLine(ProcessTools.GetProcessExecutableName(ProcessTools.GetForegroundProcess()));
+                
+                //Set the ButtonDown and ButtonUp states to whatever is in the text boxes
+                ButtonDown = PressedStateTextBox.Text.Split(' ').Select(s => Convert.ToByte(s, 16)).ToArray();
+                ButtonUp = ReleasedStateTextBox.Text.Split(' ').Select(s => Convert.ToByte(s, 16)).ToArray();
 
+                //Get the data from the report
                 byte[] state = report.Data.ToArray();
 
                 if (state == null)

@@ -12,6 +12,10 @@ namespace BigRedButton
     /// </summary>
     class Macro
     {
+        /*
+         * Singleton
+         */
+
         /// <summary>
         /// A Singleton list of all macros
         /// </summary>
@@ -22,10 +26,12 @@ namespace BigRedButton
         /// </summary>
         public static List<string> Applications;
 
-        /// <summary>
-        /// The place in the singleton that this macro is at
-        /// </summary>
-        public int index;
+        /*
+        * Member
+        */
+
+        //The index; for displaying the proper label
+        public int index = -1;
 
         //Macro data
         private string keys;
@@ -75,7 +81,9 @@ namespace BigRedButton
 
         public void CreateControls(Control parent) 
         {
-            index = Macros.Count;
+            //If the index has not been set from outside, then we're adding a new one from scratch
+            if(index == -1)
+                index = Macros.Count;
 
             //Create controls
             MacroPanel = new Panel();
@@ -101,7 +109,7 @@ namespace BigRedButton
             // 
             this.MacroLabel.AutoSize = true;
             this.MacroLabel.Location = new System.Drawing.Point(0, 6);
-            this.MacroLabel.Name = "MacroLabel" + index + 1;
+            this.MacroLabel.Name = "MacroLabel" + index;
             this.MacroLabel.Size = new System.Drawing.Size(49, 13);
             this.MacroLabel.TabIndex = 8;
             this.MacroLabel.Text = "Macro " + (index+1) + ":";
@@ -154,6 +162,7 @@ namespace BigRedButton
             this.RemoveButton.Size = new System.Drawing.Size(63, 23);
             this.RemoveButton.TabIndex = 23;
             this.RemoveButton.Text = "Remove";
+            this.RemoveButton.Click += RemoveMacro;
 
             //Add applications to the Applications ComboBox
             foreach(string s in Applications)
@@ -177,6 +186,27 @@ namespace BigRedButton
 
             //Add the Macro Panel to the parent
             parent.Controls.Add(MacroPanel);
+        }
+
+        //This will delete the macro from the list and move all other macros to their new positions
+        private void RemoveMacro(object o, EventArgs e) 
+        {
+            Control parent = MacroPanel.Parent;
+
+            for (int i = index; i < Macros.Count; i++)
+            {
+                Macro m = Macros[i];
+
+                m.index--;
+
+                m.MacroLabel.Text = "Macro " + (m.index + 1) + ":";
+            }
+
+            //Remove the controls from the parent
+            parent.Controls.Remove(MacroPanel);
+
+            //Remove the macro from the macro's list
+            Macros.Remove(this);
         }
     }
 }
