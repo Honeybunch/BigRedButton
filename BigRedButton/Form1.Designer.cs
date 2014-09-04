@@ -221,11 +221,11 @@
             this.MacrosPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MacrosPanel.AutoScroll = true;
             this.MacrosPanel.Location = new System.Drawing.Point(12, 190);
             this.MacrosPanel.Name = "MacrosPanel";
             this.MacrosPanel.Size = new System.Drawing.Size(625, 131);
             this.MacrosPanel.TabIndex = 21;
-            this.MacrosPanel.AutoScroll = true;
             // 
             // AddMacroButton
             // 
@@ -261,6 +261,7 @@
             this.Controls.Add(this.VIDTextBox);
             this.Name = "MainForm";
             this.Text = "Big Red Button";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,7 +285,7 @@
         private System.Windows.Forms.Label PressedStateLabel;
         private System.Windows.Forms.Label ReleasedStateLabel;
         private System.Windows.Forms.Timer PollTimer;
-        private System.Windows.Forms.FlowLayoutPanel MacrosPanel;
+        public System.Windows.Forms.FlowLayoutPanel MacrosPanel; //This is public so we can access it later when loading macros
         private System.Windows.Forms.Button AddMacroButton;
     }
 }

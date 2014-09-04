@@ -23,11 +23,9 @@ Z:\IGMProfile\GIT\BigRedButton\BigRedButton\bin\Debug\BigRedButton.pdb
 Z:\IGMProfile\GIT\BigRedButton\BigRedButton\bin\Debug\HidLibrary.dll
 Z:\IGMProfile\GIT\BigRedButton\BigRedButton\bin\Debug\System.Windows.Interactivity.dll
 Z:\IGMProfile\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.csprojResolveAssemblyReference.cache
-Z:\IGMProfile\GIT\BigRedButton\BigRedButton\obj\Debug\Resources\Icons.baml
-Z:\IGMProfile\GIT\BigRedButton\BigRedButton\obj\Debug\Resources\Icons.g.cs
-Z:\IGMProfile\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton_Content.g.cs
-Z:\IGMProfile\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton_MarkupCompile.cache
-Z:\IGMProfile\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.g.resources
 Z:\IGMProfile\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.MainForm.resources
 Z:\IGMProfile\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.Properties.Resources.resources
 Z:\IGMProfile\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.csproj.GenerateResource.Cache
+Z:\IGMProfile\GIT\BigRedButton\BigRedButton\bin\Debug\Newtonsoft.Json.dll
+Z:\IGMProfile\GIT\BigRedButton\BigRedButton\bin\Debug\Newtonsoft.Json.pdb
+Z:\IGMProfile\GIT\BigRedButton\BigRedButton\bin\Debug\Newtonsoft.Json.xml

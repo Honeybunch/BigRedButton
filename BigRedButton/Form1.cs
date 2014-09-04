@@ -19,6 +19,9 @@ namespace BigRedButton
 {
     public partial class MainForm : Form
     {
+        //Singleton so we can access the MacroPanel for loading macros
+        public static MainForm Form;
+
         HidDevice[] HidDeviceList;
         HidDevice HidDevice;
 
@@ -41,6 +44,10 @@ namespace BigRedButton
         public MainForm()
         {
             InitializeComponent();
+            Form = this;
+
+            //Load saved settings
+            SaveLoadManager.LoadSettings();
 
             string registry_key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths";
             using (Microsoft.Win32.RegistryKey key = Registry.LocalMachine.OpenSubKey(registry_key))
@@ -323,6 +330,16 @@ namespace BigRedButton
         {
             Macro macro = new Macro();
             macro.CreateControls(MacrosPanel);
+        }
+
+        /// <summary>
+        /// Called when the form is told to close
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SaveLoadManager.SaveSettings();
         }
     }
 }

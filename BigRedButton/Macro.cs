@@ -38,15 +38,6 @@ namespace BigRedButton
         private string application;
         private bool repeat;
 
-        //The Controls
-        public Panel MacroPanel;
-        public Label MacroLabel;
-        public TextBox MacroTextBox;
-        public Label ApplicationLabel;
-        public ComboBox ApplicationComboBox;
-        public CheckBox RepeatCheckBox;
-        public Button RemoveButton;
-
         /// <summary>
         /// The Keys that are supposed to be pressed by this macro
         /// </summary>
@@ -72,6 +63,15 @@ namespace BigRedButton
             get { return repeat; }
             set { repeat = value; }
         }
+
+        //The Controls
+        public Panel MacroPanel;
+        public Label MacroLabel;
+        public TextBox MacroTextBox;
+        public Label ApplicationLabel;
+        public ComboBox ApplicationComboBox;
+        public CheckBox RepeatCheckBox;
+        public Button RemoveButton;
 
         public Macro() 
         {
