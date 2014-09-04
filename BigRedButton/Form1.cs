@@ -101,12 +101,28 @@ namespace BigRedButton
             }
             else
             {
+                //If there are no macros, let the user know and don't start the timer
+                if (Macro.Macros == null)
+                {
+                    MessageBox.Show("Please add a Macro :)");
+                    return;
+                }
+
                 String VIDString = VIDTextBox.Text;
                 String PIDString = PIDTextBox.Text;
 
                 //Parse the HEX of the VID and PID
-                VID = Int32.Parse(VIDString, System.Globalization.NumberStyles.AllowHexSpecifier);
-                int PID = Int32.Parse(PIDString, System.Globalization.NumberStyles.AllowHexSpecifier);
+                int PID = 0;
+                try
+                {
+                    VID = Int32.Parse(VIDString, System.Globalization.NumberStyles.AllowHexSpecifier);
+                    PID = Int32.Parse(PIDString, System.Globalization.NumberStyles.AllowHexSpecifier);
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show("Check your VID and PID. They need to be valid Hex.");
+                    return;
+                }
 
                 //Because PID has to be in an array
                 PIDArray = new int[1];
@@ -198,18 +214,8 @@ namespace BigRedButton
                 else if (Enumerable.SequenceEqual(state, ButtonUp))
                     buttonPressed = false;
 
-                //Button was just pressed
-                if (buttonPressed && !wasButtonPressed)
-                {
-                    Console.WriteLine("Button Pressed");
-                    ExecuteMacros();
-                }
-                //Button was just release
-                else if (!buttonPressed && wasButtonPressed)
-                {
-                    Console.WriteLine("Button Released");
-                    SendKeys.Flush();
-                }
+                //This will execute the keystrokes depending on the macro's given settings
+                ExecuteMacros();
 
                 //Save for next poll
                 wasButtonPressed = buttonPressed;
@@ -224,7 +230,33 @@ namespace BigRedButton
                 if (m.ApplicationComboBox.Text != "None" && m.ApplicationComboBox.Text != ProcessTools.GetProcessExecutableName(ProcessTools.GetForegroundProcess()))
                     continue;
 
-                SendKeys.Send(m.MacroTextBox.Text);
+                //If the macro is set to repeat presses, the logic is going to be slightly different
+                if (m.RepeatCheckBox.Checked)
+                {
+                    if (buttonPressed)
+                    {
+
+                        SendKeys.Send(m.MacroTextBox.Text);
+                        SendKeys.Flush();
+
+                        Thread.Sleep(5);
+                    }
+                }
+                else 
+                {
+                    //Button was just pressed
+                    if (buttonPressed && !wasButtonPressed)
+                    {
+                        Console.WriteLine("Button Pressed");
+                        SendKeys.Send(m.MacroTextBox.Text);
+                    }
+                    //Button was just released
+                    else if (!buttonPressed && wasButtonPressed)
+                    {
+                        Console.WriteLine("Button Released");
+                        SendKeys.Flush();
+                    }
+                }
             }
         }
 
@@ -285,6 +317,5 @@ namespace BigRedButton
             Macro macro = new Macro();
             macro.CreateControls(MacrosPanel);
         }
-
     }
 }

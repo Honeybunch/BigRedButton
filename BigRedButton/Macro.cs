@@ -33,6 +33,7 @@ namespace BigRedButton
         private bool repeat;
 
         //The Controls
+        public Panel MacroPanel;
         public Label MacroLabel;
         public TextBox MacroTextBox;
         public Label ApplicationLabel;
@@ -77,6 +78,7 @@ namespace BigRedButton
             index = Macros.Count;
 
             //Create controls
+            MacroPanel = new Panel();
             MacroLabel = new Label();
             MacroTextBox = new TextBox();
             ApplicationLabel = new Label();
@@ -84,11 +86,21 @@ namespace BigRedButton
             RepeatCheckBox = new CheckBox();
             RemoveButton = new Button();
 
+            //
+            // MacroPanel
+            //
+            this.MacroPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MacroPanel.Width = parent.ClientSize.Width;
+            this.MacroPanel.Height = 25;
+            parent.ClientSizeChanged += delegate(object o, EventArgs e)
+                {this.MacroPanel.Width = parent.ClientSize.Width;};
             // 
             // MacroLabel
             // 
             this.MacroLabel.AutoSize = true;
-            this.MacroLabel.Location = new System.Drawing.Point(0, 6 + (26 * index));
+            this.MacroLabel.Location = new System.Drawing.Point(0, 6);
             this.MacroLabel.Name = "MacroLabel" + index + 1;
             this.MacroLabel.Size = new System.Drawing.Size(49, 13);
             this.MacroLabel.TabIndex = 8;
@@ -96,7 +108,7 @@ namespace BigRedButton
             // 
             // MacroTextBox
             // 
-            this.MacroTextBox.Location = new System.Drawing.Point(58, (3 * (index+1)) + (23 * index));
+            this.MacroTextBox.Location = new System.Drawing.Point(58, 3);
             this.MacroTextBox.Name = "MacroTextBox" + index;
             this.MacroTextBox.Size = new System.Drawing.Size(40, 20);
             this.MacroTextBox.TabIndex = 7;
@@ -106,7 +118,7 @@ namespace BigRedButton
             // ApplicationLabel
             // 
             this.ApplicationLabel.AutoSize = true;
-            this.ApplicationLabel.Location = new System.Drawing.Point(104, 6 + (26 * index));
+            this.ApplicationLabel.Location = new System.Drawing.Point(104, 6);
             this.ApplicationLabel.Name = "ApplicationLabel" + index;
             this.ApplicationLabel.Size = new System.Drawing.Size(59, 13);
             this.ApplicationLabel.TabIndex = 19;
@@ -118,16 +130,16 @@ namespace BigRedButton
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ApplicationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ApplicationComboBox.ItemHeight = 13;
-            this.ApplicationComboBox.Location = new System.Drawing.Point(169, (3 * (index + 1)) + (23 * index));
+            this.ApplicationComboBox.Location = new System.Drawing.Point(169, 3);
             this.ApplicationComboBox.Name = "ApplicationComboBox" + index;
-            this.ApplicationComboBox.Size = new System.Drawing.Size(204, 21);
+            this.ApplicationComboBox.Size = new System.Drawing.Size(parent.ClientSize.Width - 355, 21);
             this.ApplicationComboBox.TabIndex = 18;
             // 
             // RepeatCheckBox
             // 
             this.RepeatCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RepeatCheckBox.AutoSize = true;
-            this.RepeatCheckBox.Location = new System.Drawing.Point(379, 5 + (26 * index));
+            this.RepeatCheckBox.Location = new System.Drawing.Point(parent.ClientSize.Width - 180, 5);
             this.RepeatCheckBox.Name = "RepeatCheckBox" + index;
             this.RepeatCheckBox.Size = new System.Drawing.Size(101, 17);
             this.RepeatCheckBox.TabIndex = 22;
@@ -137,7 +149,7 @@ namespace BigRedButton
             // RemoveMacroButton
             // 
             this.RemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveButton.Location = new System.Drawing.Point(486, 1 + (26 * index));
+            this.RemoveButton.Location = new System.Drawing.Point(parent.ClientSize.Width - 69, 1);
             this.RemoveButton.Name = "RemoveMacroButton" + index;
             this.RemoveButton.Size = new System.Drawing.Size(63, 23);
             this.RemoveButton.TabIndex = 23;
@@ -154,14 +166,17 @@ namespace BigRedButton
             Macros.Add(this);
 
             //
-            //Add controls to parent (Macro Panel probably)
+            //Add controls to the Macro Panel
             //
-            parent.Controls.Add(MacroLabel);
-            parent.Controls.Add(MacroTextBox);
-            parent.Controls.Add(ApplicationLabel);
-            parent.Controls.Add(ApplicationComboBox);
-            parent.Controls.Add(RepeatCheckBox);
-            parent.Controls.Add(RemoveButton);
+            MacroPanel.Controls.Add(MacroLabel);
+            MacroPanel.Controls.Add(MacroTextBox);
+            MacroPanel.Controls.Add(ApplicationLabel);
+            MacroPanel.Controls.Add(ApplicationComboBox);
+            MacroPanel.Controls.Add(RepeatCheckBox);
+            MacroPanel.Controls.Add(RemoveButton);
+
+            //Add the Macro Panel to the parent
+            parent.Controls.Add(MacroPanel);
         }
     }
 }

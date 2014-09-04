@@ -45,7 +45,7 @@
             this.PressedStateLabel = new System.Windows.Forms.Label();
             this.ReleasedStateLabel = new System.Windows.Forms.Label();
             this.PollTimer = new System.Windows.Forms.Timer(this.components);
-            this.MacrosPanel = new System.Windows.Forms.Panel();
+            this.MacrosPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.AddMacroButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -65,7 +65,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.VIDTextBox.Location = new System.Drawing.Point(45, 22);
             this.VIDTextBox.Name = "VIDTextBox";
-            this.VIDTextBox.Size = new System.Drawing.Size(446, 20);
+            this.VIDTextBox.Size = new System.Drawing.Size(510, 20);
             this.VIDTextBox.TabIndex = 1;
             this.VIDTextBox.Text = "1D34";
             this.VIDTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -94,7 +94,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PIDTextBox.Location = new System.Drawing.Point(45, 48);
             this.PIDTextBox.Name = "PIDTextBox";
-            this.PIDTextBox.Size = new System.Drawing.Size(446, 20);
+            this.PIDTextBox.Size = new System.Drawing.Size(510, 20);
             this.PIDTextBox.TabIndex = 3;
             this.PIDTextBox.Text = "000D";
             this.PIDTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -102,7 +102,7 @@
             // VIDResetButton
             // 
             this.VIDResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.VIDResetButton.Location = new System.Drawing.Point(497, 19);
+            this.VIDResetButton.Location = new System.Drawing.Point(561, 20);
             this.VIDResetButton.Name = "VIDResetButton";
             this.VIDResetButton.Size = new System.Drawing.Size(75, 23);
             this.VIDResetButton.TabIndex = 5;
@@ -112,7 +112,7 @@
             // PIDResetButton
             // 
             this.PIDResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PIDResetButton.Location = new System.Drawing.Point(497, 45);
+            this.PIDResetButton.Location = new System.Drawing.Point(561, 46);
             this.PIDResetButton.Name = "PIDResetButton";
             this.PIDResetButton.Size = new System.Drawing.Size(75, 23);
             this.PIDResetButton.TabIndex = 6;
@@ -134,7 +134,7 @@
             // 
             this.AdvancedCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AdvancedCheckBox.AutoSize = true;
-            this.AdvancedCheckBox.Location = new System.Drawing.Point(498, 86);
+            this.AdvancedCheckBox.Location = new System.Drawing.Point(562, 86);
             this.AdvancedCheckBox.Name = "AdvancedCheckBox";
             this.AdvancedCheckBox.Size = new System.Drawing.Size(75, 17);
             this.AdvancedCheckBox.TabIndex = 11;
@@ -149,7 +149,7 @@
             this.CurrentStateTextBox.Location = new System.Drawing.Point(111, 112);
             this.CurrentStateTextBox.Name = "CurrentStateTextBox";
             this.CurrentStateTextBox.ReadOnly = true;
-            this.CurrentStateTextBox.Size = new System.Drawing.Size(462, 20);
+            this.CurrentStateTextBox.Size = new System.Drawing.Size(526, 20);
             this.CurrentStateTextBox.TabIndex = 12;
             this.CurrentStateTextBox.Text = "Unavailable";
             this.CurrentStateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -161,7 +161,7 @@
             this.PressedStateTextBox.Location = new System.Drawing.Point(111, 138);
             this.PressedStateTextBox.Name = "PressedStateTextBox";
             this.PressedStateTextBox.ReadOnly = true;
-            this.PressedStateTextBox.Size = new System.Drawing.Size(462, 20);
+            this.PressedStateTextBox.Size = new System.Drawing.Size(526, 20);
             this.PressedStateTextBox.TabIndex = 13;
             this.PressedStateTextBox.Text = "0x16 0x00 0x00 0x00 0x00 0x00 0x00 0x03";
             this.PressedStateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -173,7 +173,7 @@
             this.ReleasedStateTextBox.Location = new System.Drawing.Point(111, 164);
             this.ReleasedStateTextBox.Name = "ReleasedStateTextBox";
             this.ReleasedStateTextBox.ReadOnly = true;
-            this.ReleasedStateTextBox.Size = new System.Drawing.Size(462, 20);
+            this.ReleasedStateTextBox.Size = new System.Drawing.Size(526, 20);
             this.ReleasedStateTextBox.TabIndex = 14;
             this.ReleasedStateTextBox.Text = "0x17 0x00 0x00 0x00 0x00 0x00 0x00 0x03";
             this.ReleasedStateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -221,15 +221,16 @@
             this.MacrosPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MacrosPanel.AutoScroll = true;
             this.MacrosPanel.Location = new System.Drawing.Point(12, 190);
             this.MacrosPanel.Name = "MacrosPanel";
-            this.MacrosPanel.Size = new System.Drawing.Size(561, 131);
+            this.MacrosPanel.Size = new System.Drawing.Size(625, 131);
             this.MacrosPanel.TabIndex = 21;
             // 
             // AddMacroButton
             // 
             this.AddMacroButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddMacroButton.Location = new System.Drawing.Point(498, 327);
+            this.AddMacroButton.Location = new System.Drawing.Point(562, 327);
             this.AddMacroButton.Name = "AddMacroButton";
             this.AddMacroButton.Size = new System.Drawing.Size(75, 23);
             this.AddMacroButton.TabIndex = 22;
@@ -240,7 +241,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 357);
+            this.ClientSize = new System.Drawing.Size(649, 357);
             this.Controls.Add(this.AddMacroButton);
             this.Controls.Add(this.MacrosPanel);
             this.Controls.Add(this.ReleasedStateLabel);
@@ -283,7 +284,7 @@
         private System.Windows.Forms.Label PressedStateLabel;
         private System.Windows.Forms.Label ReleasedStateLabel;
         private System.Windows.Forms.Timer PollTimer;
-        private System.Windows.Forms.Panel MacrosPanel;
+        private System.Windows.Forms.FlowLayoutPanel MacrosPanel;
         private System.Windows.Forms.Button AddMacroButton;
     }
 }
