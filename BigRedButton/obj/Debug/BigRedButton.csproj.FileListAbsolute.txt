@@ -8,12 +8,6 @@ D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.Properties.
 D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.csproj.GenerateResource.Cache
 D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.exe
 D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.pdb
-D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\Resources\Icons.baml
-D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\Resources\Icons.g.cs
-D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton_Content.g.cs
-D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton_MarkupCompile.cache
-D:\Repositories\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.g.resources
-D:\Repositories\GIT\BigRedButton\BigRedButton\bin\Debug\MetroFramework.dll
 D:\Repositories\GIT\BigRedButton\BigRedButton\bin\Debug\System.Windows.Interactivity.dll
 Z:\IGMProfile\GIT\BigRedButton\BigRedButton\bin\Debug\BigRedButton.exe.config
 Z:\IGMProfile\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.exe
@@ -29,3 +23,6 @@ Z:\IGMProfile\GIT\BigRedButton\BigRedButton\obj\Debug\BigRedButton.csproj.Genera
 Z:\IGMProfile\GIT\BigRedButton\BigRedButton\bin\Debug\Newtonsoft.Json.dll
 Z:\IGMProfile\GIT\BigRedButton\BigRedButton\bin\Debug\Newtonsoft.Json.pdb
 Z:\IGMProfile\GIT\BigRedButton\BigRedButton\bin\Debug\Newtonsoft.Json.xml
+D:\Repositories\GIT\BigRedButton\BigRedButton\bin\Debug\Newtonsoft.Json.dll
+D:\Repositories\GIT\BigRedButton\BigRedButton\bin\Debug\Newtonsoft.Json.pdb
+D:\Repositories\GIT\BigRedButton\BigRedButton\bin\Debug\Newtonsoft.Json.xml

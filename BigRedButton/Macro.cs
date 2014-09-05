@@ -33,37 +33,6 @@ namespace BigRedButton
         //The index; for displaying the proper label
         public int index = -1;
 
-        //Macro data
-        private string keys;
-        private string application;
-        private bool repeat;
-
-        /// <summary>
-        /// The Keys that are supposed to be pressed by this macro
-        /// </summary>
-        public string Keys 
-        {
-            get { return keys; }
-            set { keys = value; }
-        }
-        /// <summary>
-        /// The Application that this macro is set to exectue on
-        /// </summary>
-        public string Application 
-        {
-            get { return application; }
-            set { application = value; }
-        }
-
-        /// <summary>
-        /// Whether or not the macro will be continuously executed as the button is held
-        /// </summary>
-        public bool Repeat 
-        {
-            get { return repeat; }
-            set { repeat = value; }
-        }
-
         //The Controls
         public Panel MacroPanel;
         public Label MacroLabel;

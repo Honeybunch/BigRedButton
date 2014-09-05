@@ -46,9 +46,6 @@ namespace BigRedButton
             InitializeComponent();
             Form = this;
 
-            //Load saved settings
-            SaveLoadManager.LoadSettings();
-
             string registry_key = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths";
             using (Microsoft.Win32.RegistryKey key = Registry.LocalMachine.OpenSubKey(registry_key))
             {
@@ -71,6 +68,9 @@ namespace BigRedButton
 
                 //Store the list of applications in the Macro class for when Macros are added to the form
                 Macro.Applications = displayNames;
+
+                //Load saved settings
+                SaveLoadManager.LoadSettings();
             }
         }
 
@@ -340,6 +340,16 @@ namespace BigRedButton
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             SaveLoadManager.SaveSettings();
+        }
+
+        private void LoadMacrosButton_Click(object sender, EventArgs e)
+        {
+            SaveLoadManager.LoadMacroSettings();
+        }
+
+        private void SaveMacrosButton_Click(object sender, EventArgs e)
+        {
+            SaveLoadManager.SaveMacroSettings();
         }
     }
 }
